@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<h1 v-color v-font>1111111111111</h1>
+	</div>
+	<div id="app2">
+		<h1 v-color>1111111111111</h1>
+	</div>
+	<script src="../js/vue.min.js"></script>
+	<script>
+		Vue.directive('color',{
+			inserted:function (el,binding) {
+				console.log(el);
+				console.log(binding);
+				el.style.color="red";
+			}
+		})
+		let vm=new Vue({
+			el:"#app",
+			data:{
+				message:"你好"
+			},
+			directive:{
+				color:{
+					inserted:function(el){
+						el.style.color="red";
+					}
+				},
+				font:{
+					inserted(el){
+						el.style.fontStyle="italic"
+					}
+				}
+			}
+		});
+	</script>
+</body>
+</html>
